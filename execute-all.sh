@@ -323,6 +323,7 @@ DEVICE=""
 BUILDID=""
 OUTPUT_DIR=""
 INPUT_IMG=""
+INPUT_OTA=""
 KEEP_DATA=false
 DEV_ALIAS=""
 API_LEVEL=""
@@ -374,6 +375,10 @@ do
       ;;
     -i|--imgs)
       INPUT_IMG="$(_realpath "$2")"
+      shift
+      ;;
+    -O|--ota)
+      INPUT_OTA="$(_realpath "$2")"
       shift
       ;;
     -f|--full)
@@ -520,7 +525,7 @@ fi
 
 if [ "$OTA" = true ]; then
 OtaArchive=""
-if [[ "$INPUT_IMG" == "" ]]; then
+if [[ "$INPUT_OTA" == "" ]]; then
 
   # Factory image alias for devices with naming incompatibilities with AOSP
   if [[ "$DEVICE" == "flounder" && "$DEV_ALIAS" == "" ]]; then
@@ -544,7 +549,7 @@ if [[ "$INPUT_IMG" == "" ]]; then
   OtaArchive="$(find "$OUT_BASE" -iname "*$DEV_ALIAS*ota-$BUILDID*.tgz" -or \
                        -iname "*$DEV_ALIAS*ota-$BUILDID*.zip" | head -1)"
 else
-  OtaArchive="$INPUT_IMG"
+  OtaArchive="$INPUT_OTA"
 fi
 fi
 
