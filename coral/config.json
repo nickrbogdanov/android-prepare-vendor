@@ -121,10 +121,6 @@
         "vendor/lib64/vendor.google.wireless_charger@1.0.so",
 
         "system/bin/move_time_data.sh",
-        "system/lib/libpsi.so",
-        "system/lib64/libpsi.so",
-        "system/lib/libdynamic_depth.so",
-        "system/lib64/libdynamic_depth.so",
         "system/lib/libdepthphoto.so",
         "system/lib64/libdepthphoto.so",
         "system/lib/vendor.display.config@1.0.so",
