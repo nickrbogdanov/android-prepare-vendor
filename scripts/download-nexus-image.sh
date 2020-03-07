@@ -155,18 +155,12 @@ done
 # Accept news ToS page
 accept_tos
 
-if [ "$OTA" = true ]; then
-  URL="$GURL2"
-else
-  URL="$GURL"
-fi
-
 # Then retrieve the index page
 if [ "$OTA" = true ]; then
-  url=$(curl -L -b "$COOKIE_FILE" --silent "$URL" | \
+  url=$(curl -L -b "$COOKIE_FILE" --silent "$GURL2" | \
         grep -i "<a href=.*$DEV_ALIAS-ota-$BUILDID-" | cut -d '"' -f2)
 else
-  url=$(curl -L -b "$COOKIE_FILE" --silent  "$URL" | \
+  url=$(curl -L -b "$COOKIE_FILE" --silent "$GURL" | \
         grep -i "<a href=.*$DEV_ALIAS-$BUILDID-" | cut -d '"' -f2)
 fi
 
